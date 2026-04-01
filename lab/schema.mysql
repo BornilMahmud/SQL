@@ -1,0 +1,69 @@
+create table faculty (
+	fid int AUTO_INCREMENT PRIMARY key,
+    fname varchar(45) not null,
+    designation varchar(40),
+    salary decimal(10,2)
+);
+
+create table students (
+	sid int AUTO_INCREMENT PRIMARY key,
+    sname varchar(45) not null,
+    email varchar(40),
+    phone varchar(11)
+);
+
+create table employee (
+	emid int AUTO_INCREMENT PRIMARY key,
+    emname varchar(45) not null,
+    age int,
+    salary decimal(10,2)
+);
+
+create table courses (
+	cid int AUTO_INCREMENT PRIMARY key,
+    cname varchar(45) not null,
+    credit decimal(3,2)
+);
+
+create table enrollment (
+	sid int,
+    cid int,
+    FOREIGN KEY (sid) REFERENCES students(sid),
+    
+    FOREIGN key (cid) REFERENCES  courses(cid)
+    
+);
+
+
+create table takes (
+	fid int,
+    cid int,
+    FOREIGN KEY (fid) REFERENCES faculty(fid),
+   
+    FOREIGN key (cid) REFERENCES  courses(cid)    
+);
+
+INSERT INTO faculty (fname, designation, salary) VALUES
+('Rahim Uddin', 'Professor', 75000.00),
+('Fatema Begum', 'Associate Professor', 55000.00),
+('Karim Hossain', 'Lecturer', 40000.00);
+
+INSERT INTO students (sname, email, phone) VALUES
+('Ayesha Siddika', 'ayesha@gmail.com', '01712345678'),
+('Rafiq Alam', 'rafiq@gmail.com', '01823456789'),
+('Nabila Akter', 'nabila@gmail.com', '01934567890');
+
+INSERT INTO employee (emname, age, salary) VALUES
+('Monir Hossain', 35, 30000.00),
+('Jannatul Ferdous', 28, 28000.00);
+
+INSERT INTO courses (cname, credit) VALUES
+('Database Systems', 3.00),
+('Software Engineering', 3.00),
+('Computer Networks', 2.50);
+
+select * from faculty;
+select count(distinct sid)from enrollment;
+
+
+
