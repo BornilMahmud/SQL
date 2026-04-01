@@ -62,8 +62,15 @@ INSERT INTO courses (cname, credit) VALUES
 ('Software Engineering', 3.00),
 ('Computer Networks', 2.50);
 
+INSERT INTO enrollment (sid, cid) VALUES
+(1, 1),  -- Ayesha Siddika enrolls in Database Systems
+(2, 2),  -- Rafiq Alam enrolls in Software Engineering
+(3, 3);  -- Nabila Akter enrolls in Computer Networks
+
 select * from faculty;
 select count(distinct sid)from enrollment;
+
+
 
 
 
