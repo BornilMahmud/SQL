@@ -1,0 +1,61 @@
+CREATE TABLE Customers (
+    customer_id INT,
+    name VARCHAR(50),
+    city VARCHAR(50)
+);
+
+INSERT INTO Customers VALUES
+(1, 'Rahim', 'Dhaka'),
+(2, 'Karim', 'Chittagong'),
+(3, 'Anika', 'Khulna'),
+(4, 'Sadia', 'Dhaka'),
+(5, 'Nabil', 'Sylhet');
+
+CREATE TABLE Orders (
+    order_id INT,
+    customer_id INT,
+    product_id INT,
+    payment_id INT,
+    amount INT
+);
+
+INSERT INTO Orders VALUES
+(101, 1, 1001, 201, 500),
+(102, 1, 1002, 202, 700),
+(103, 2, 1003, 203, 300),
+(104, 3, 1001, 204, 400),
+(105, 6, 1004, 205, 900);
+
+CREATE TABLE Products (
+    product_id INT,
+    product_name VARCHAR(50),
+    price INT
+);
+
+INSERT INTO Products VALUES
+(1001, 'Laptop', 500),
+(1002, 'Mouse', 200),
+(1003, 'Keyboard', 300),
+(1004, 'Monitor', 900),
+(1005, 'Speaker', 150);
+
+CREATE TABLE Payments (
+    payment_id INT,
+    payment_method VARCHAR(50)
+);
+
+INSERT INTO Payments VALUES
+(201, 'Cash'),
+(202, 'Card'),
+(203, 'Bkash'),
+(204, 'Nagad'),
+(206, 'Rocket'); 
+
+select c.name ,p.product_id,o.amount  
+from customers c left join orders o on o.customer_id = c.customer_id
+left join products p on o.product_id= p.product_id;
+
+
+
+
+
