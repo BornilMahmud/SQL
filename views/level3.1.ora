@@ -1,0 +1,47 @@
+CREATE TABLE employees (
+  emp_id INTEGER PRIMARY KEY,
+  emp_name TEXT,
+  salary REAL,
+  dept_id INTEGER
+);
+INSERT INTO employees VALUES (1, 'Alice', 75000, 101);
+INSERT INTO employees VALUES (2, 'Bob', 60000, 102);
+INSERT INTO employees VALUES (3, 'Carol', 85000, 101);
+INSERT INTO employees VALUES (4, 'David', 50000, 103);
+
+CREATE TABLE departments (
+  dept_id INTEGER PRIMARY KEY,
+  dept_name TEXT
+);
+
+INSERT INTO departments VALUES (101, 'Engineering');
+INSERT INTO departments VALUES (102, 'Marketing');
+INSERT INTO departments VALUES (103, 'HR');
+
+CREATE TABLE locations (
+  dept_id INTEGER,
+  location TEXT
+);
+INSERT INTO locations VALUES (101, 'New York');
+INSERT INTO locations VALUES (102, 'London');
+INSERT INTO locations VALUES (103, 'Tokyo');
+
+CREATE TABLE projects (
+  project_id INTEGER,
+  emp_id INTEGER,
+  project_name TEXT
+);
+INSERT INTO projects VALUES (1, 1, 'AI System');
+INSERT INTO projects VALUES (2, 2, 'Marketing Campaign');
+INSERT INTO projects VALUES (3, 3, 'Backend API');
+INSERT INTO projects VALUES (4, 4, 'HR Portal');
+
+create view show_info as 
+  select e.emp_name,e.salary ,l.location,p.project_name, d.dept_name from employees e 
+
+join departments d on d.dept_id = e.dept_id join 
+locations l on l.dept_id = d. dept_id join
+projects p on p.emp_id = e.emp_id ;
+
+select * from show_info;
+
